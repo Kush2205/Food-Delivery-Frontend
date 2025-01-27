@@ -13,7 +13,7 @@ function OrdrsPage() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:3000/api/v1/Order/orders', {
+        const response = await axios.get('https://food-delivery-backend-l9hg.onrender.com/api/v1/Order/orders', {
           headers: {
             Authorization: `${token}`,
           },
