@@ -1,5 +1,5 @@
 // filepath: /d:/Projects/Intern Projects/freotend/src/App.tsx
-import React from 'react';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Pages/Navbar';
 import LandingPage from './components/Pages/LandingPage';

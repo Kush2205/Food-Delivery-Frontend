@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
@@ -26,7 +26,7 @@ function AuthPage() {
     threshold: 1,
   });
 
-  const handleLogin = async (event) => {
+  const handleLogin = async (event : any) => {
     event.preventDefault();
     setLoading(true);
     setErrorMessage('');
@@ -42,7 +42,7 @@ function AuthPage() {
       } else {
         setErrorMessage(response.data.error || 'Invalid Credentials');
       }
-    } catch (error) {
+    } catch (error : any) {
     
       setErrorMessage(error.response.data.error[0].message || 'Invalid Credentials');
     } finally {
@@ -50,7 +50,7 @@ function AuthPage() {
     }
   };
 
-  const handleSignUp = async (event) => {
+  const handleSignUp = async (event : any) => {
     event.preventDefault();
     setLoading(true);
     setErrorMessage('');
@@ -67,7 +67,7 @@ function AuthPage() {
       } else {
         setErrorMessage(response.data.error || 'Sign Up Failed');
       }
-    } catch (error) {
+    } catch (error : any) {
       
       setErrorMessage(error.response.data.error[0].message || 'Invalid Credentials');
     } finally {
