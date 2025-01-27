@@ -55,7 +55,7 @@ function AuthPage() {
     setLoading(true);
     setErrorMessage('');
     try {
-      const response = await axios.post('http://127.0.0.1:3000/api/v1/user/register', {
+      const response = await axios.post('https://food-delivery-backend-l9hg.onrender.com/api/v1/user/register', {
         name: name,
         email: username,
         password: password,
