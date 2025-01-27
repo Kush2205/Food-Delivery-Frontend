@@ -1,6 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+interface CartItem {
+  id: string;
+  title: string;
+  price: number;
+  quantity: number;
+  imageurl: string;
+}
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+
 import { incrementQuantity, decrementQuantity, removeFromCart } from '../../store/Slices/CartSlice';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -8,14 +16,14 @@ import axios from 'axios';
 
 function CheckoutPage() {
   const dispatch = useDispatch();
-  const cart = useSelector((state: RootState) => state.cart);
+  const cart = useSelector((state:any) => state.cart);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [orderId, setOrderId] = useState('');
   const navigate = useNavigate();
-  const token = useSelector((state: RootState) => state.auth.token);
+  const token = useSelector((state: any) => state.auth.token);
 
   const calculateSubtotal = () => {
-    return cart.cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return cart.cart.reduce((acc :any, item : any) => acc + item.price * item.quantity, 0);
   };
 
   const calculateTax = (subtotal: number) => {
@@ -27,16 +35,30 @@ function CheckoutPage() {
   const total = subtotal + tax;
 
   const handleCheckout = async () => {
-    const orderDetails = {
-      
-          items: cart.cart.map(item => ({
-            menuId: item.id,
-            quantity: item.quantity,
-          })),
-          totalAmount: total.toFixed(2),
-          status: 'pending',
-        
-      
+    interface CartItem {
+      id: string;
+      title: string;
+      price: number;
+      quantity: number;
+      imageurl: string;
+    }
+
+    interface OrderDetails {
+      items: {
+        menuId: string;
+        quantity: number;
+      }[];
+      totalAmount: string;
+      status: string;
+    }
+
+    const orderDetails: OrderDetails = {
+      items: cart.cart.map((item: CartItem) => ({
+        menuId: item.id,
+        quantity: item.quantity,
+      })),
+      totalAmount: total.toFixed(2),
+      status: 'pending',
     };
 
     try {
@@ -86,7 +108,7 @@ function CheckoutPage() {
           >
             <div className="bg-neutral-800 rounded-lg shadow-lg p-6">
               <div className="space-y-4">
-                {cart.cart.map((item) => (
+                {cart.cart.map((item: CartItem) => (
                   <motion.div
                     key={item.id}
                     className="flex items-center justify-between p-4 border-b border-neutral-700"

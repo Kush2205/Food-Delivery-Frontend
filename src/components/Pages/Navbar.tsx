@@ -1,8 +1,8 @@
-import React from 'react';
+
 import Cart from '../../icons/Cart';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
-import { useSelector, useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
  // Adjust the import path as necessary
 import { clearToken } from '../../store/Slices/AuthSlice'; // Adjust the import path as necessary

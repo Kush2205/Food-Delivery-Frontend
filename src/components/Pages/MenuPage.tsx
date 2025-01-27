@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import MenuItem from './MenuItem';
-import EditForm from './EditForm';
+
 import CheckoutButton from '../../ui/CheckoutButton';
 import axios from 'axios';
 
@@ -9,8 +9,8 @@ import axios from 'axios';
 function MenuPage() {
   const [menuItems, setMenuItems] = useState([]);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
-  const [currentItem, setCurrentItem] = useState(null);
-  const token = useSelector((state) => state.auth.token);
+  
+  const token = useSelector((state : any) => state.auth.token);
 
   const getMenu = async () => {
     try {
@@ -31,11 +31,7 @@ function MenuPage() {
     }
   }, [token]);
 
-  const handleEditClick = (item) => {
-    setCurrentItem(item);
-    setIsEditFormVisible(true);
-  };
-
+  
   const handleCloseForm = () => {
     setIsEditFormVisible(false);
   };
@@ -49,7 +45,7 @@ function MenuPage() {
       <div className="menu-page">
         <h1 className="text-white text-4xl text-center mt-10">Menu</h1>
         <div className="menu-items grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-10">
-          {menuItems.map((item) => (
+          {menuItems.map((item : any) => (
             <MenuItem
               key={item._id}
               id={item._id}
@@ -57,7 +53,7 @@ function MenuPage() {
               price={item.price}
               imageurl={item.imageUrl}
               description={item.description}
-              onEditClick={() => handleEditClick(item)}
+             
             />
           ))}
         </div>
@@ -65,7 +61,7 @@ function MenuPage() {
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="bg-neutral-800 p-8 rounded-lg shadow-lg w-full max-w-md">
               <button onClick={handleCloseForm} className="text-white mb-4">Close</button>
-              <EditForm item={currentItem} />
+             
             </div>
           </div>
         )}

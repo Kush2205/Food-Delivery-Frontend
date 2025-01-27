@@ -1,13 +1,10 @@
-interface CheckoutButtonProps {
-    quantity?: number;
-    onClick?: () => void;
-}
+
 
 import Arrow from '../icons/Arrow Right';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-function CheckoutButton(props: CheckoutButtonProps) {
+function CheckoutButton() {
     const navigate = useNavigate();
     var quantity: number = 0
 

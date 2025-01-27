@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, updateTotal } from '../../store/Slices/CartSlice';
 import { motion } from 'framer-motion';
 import Edit from '../../icons/Edit';
 
-const MenuItem = (props) => {
+const MenuItem = (props : any) => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state : any) => state.cart);
 
   const addCart = () => {
     dispatch(addToCart({id : props.id, title: props.title, price: props.price, quantity: quantity, imageurl: props.imageurl }));

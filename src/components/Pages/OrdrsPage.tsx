@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+
 
 function OrdrsPage() {
   const [orders, setOrders] = useState([]);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [selectedOrder, setSelectedOrder] = useState(null);
-  const token = useSelector((state: RootState) => state.auth.token);
+  const [selectedOrder, setSelectedOrder] = useState<any>(null);
+  const token = useSelector((state: any) => state.auth.token);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -27,7 +27,7 @@ function OrdrsPage() {
     fetchOrders();
   }, [token]);
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status : any) => {
     switch (status) {
       case 'Delivered':
         return 'bg-green-500 text-white';
@@ -40,7 +40,7 @@ function OrdrsPage() {
     }
   };
 
-  const handleOrderClick = (order) => {
+  const handleOrderClick = (order : any) => {
     setSelectedOrder(order);
     setIsPopupVisible(true);
   };
@@ -55,7 +55,7 @@ function OrdrsPage() {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-white">Your Orders</h2>
         <div className="space-y-4">
-          {orders.map((order) => (
+          {orders.map((order : any) => (
             <motion.div
               key={order._id}
               className="bg-neutral-800 rounded-lg shadow-lg p-6 flex justify-between items-center"
@@ -72,7 +72,7 @@ function OrdrsPage() {
               <div>
                 <p className="text-gray-400">Items:</p>
                 <ul className="text-gray-400">
-                  {order.items.map((item) => (
+                  {order.items.map((item : any) => (
                     <li key={item._id}>Menu ID: {item.menuId}, Quantity: {item.quantity}</li>
                   ))}
                 </ul>
@@ -102,7 +102,7 @@ function OrdrsPage() {
             <div className="text-white mb-4">
               <p>Items:</p>
               <ul>
-                {selectedOrder.items.map((item) => (
+                {selectedOrder.items.map((item :any) => (
                   <li key={item._id}>Menu ID: {item.menuId}, Quantity: {item.quantity}</li>
                 ))}
               </ul>

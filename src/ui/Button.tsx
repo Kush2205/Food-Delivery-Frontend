@@ -2,16 +2,16 @@ import React from 'react';
 
 interface ButtonProps {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
   bgColor: string;
   width: string;
   height: string;
-  textsize: string;
-  borderColor: string;
-  textcolor: string;
-  onHoverColor: string;
-  onHoverTextColor: string;
-  borderSize: string;
+  textsize?: string;
+  borderColor?: string;
+  textcolor?: string;
+  onHoverColor?: string;
+  onHoverTextColor?: string;
+  borderSize?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -48,12 +48,12 @@ const Button: React.FC<ButtonProps> = ({
           color: textcolor,
         }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLSpanElement).style.backgroundColor = onHoverColor;
-          (e.currentTarget as HTMLSpanElement).style.color = onHoverTextColor;
+          (e.currentTarget as HTMLSpanElement).style.backgroundColor = onHoverColor || bgColor;
+          (e.currentTarget as HTMLSpanElement).style.color = (onHoverTextColor || textcolor) ?? '';
         }}
         onMouseLeave={(e) => {
           (e.currentTarget as HTMLSpanElement).style.backgroundColor = bgColor;
-          (e.currentTarget as HTMLSpanElement).style.color = textcolor;
+          (e.currentTarget as HTMLSpanElement).style.color = textcolor || '';
         }}
       >
         {text}
