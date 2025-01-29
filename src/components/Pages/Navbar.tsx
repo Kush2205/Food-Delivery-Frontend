@@ -32,7 +32,7 @@ function Navbar() {
           ) : (
             <ScrollLink to="auth-section" smooth={true} duration={500} className='hover:text-[#3498db] transition-colors cursor-pointer'>Login</ScrollLink>
           )}
-          <a href='#' className='hover:text-[#3498db] transition-colors'>{<Cart />}</a>
+          <Link to="/checkout" className='hover:text-[#3498db] transition-colors'>{<Cart />}</Link>
         </div>
       </div>
     </>
